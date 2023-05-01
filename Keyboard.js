@@ -97,17 +97,16 @@ const Keyboard = {
       ".",
       ",",
       "/",
-      "!",
-      "Shiftr",
+      "ArrowUp",
       "Ctrl",
       "Win",
       "Alt",
       "space",
       "Alt",
       "Ctrl",
-      "!",
-      "!",
-      "!",
+      "ArrowLeft",
+      "ArrowDown",
+      "ArrowRight",
     ];
 
     // Creates HTML for an icon
@@ -118,16 +117,36 @@ const Keyboard = {
     keyLayout.forEach((key) => {
       const keyElement = document.createElement("button");
       const insertLineBreak =
-        ["Backspace", "Del", "Enter", "Shiftr"].indexOf(key) !== -1;
+        ["Backspace", "Del", "Enter", "ArrowUp"].indexOf(key) !== -1;
 
       // Add attributes/classes
       keyElement.setAttribute("type", "button");
       keyElement.classList.add("keyboard__key");
 
       switch (key) {
-        case "backspace":
-          keyElement.classList.add("keyboard__key--wide");
-          keyElement.innerHTML = createIconHTML("backspace");
+        case "Backspace":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("Backspace");
+
+          keyElement.addEventListener("click", () => {
+            this.properties.value = this.properties.value.substring(
+              0,
+              this.properties.value.length - 1
+            );
+            this._triggerEvent("oninput");
+          });
+
+          break;
+
+        case "Del":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("Del");
 
           keyElement.addEventListener("click", () => {
             this.properties.value = this.properties.value.substring(
@@ -142,7 +161,8 @@ const Keyboard = {
         case "Caps lock":
           keyElement.classList.add(
             "keyboard__key--wide",
-            "keyboard__key--activatable"
+            "keyboard__key--activatable",
+            "keyboard__key--dark"
           );
           keyElement.innerHTML = createIconHTML("Caps lock");
 
@@ -157,7 +177,10 @@ const Keyboard = {
           break;
 
         case "Enter":
-          keyElement.classList.add("keyboard__key--wide");
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
           keyElement.innerHTML = createIconHTML("Enter");
 
           keyElement.addEventListener("click", () => {
@@ -167,8 +190,73 @@ const Keyboard = {
 
           break;
 
+        case "Tab":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("Tab");
+
+          keyElement.addEventListener("click", () => {
+            this.properties.value += "\t";
+          });
+
+          break;
+        case "ArrowUp":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("ArrowUp");
+
+          keyElement.addEventListener("click", () => {
+            this.properties.value += "\t";
+          });
+
+          break;
+
+        case "ArrowDown":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("ArrowDown");
+
+          keyElement.addEventListener("click", () => {
+            this.properties.value += "\t";
+          });
+
+          break;
+        case "ArrowLeft":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("ArrowLeft");
+
+          keyElement.addEventListener("click", () => {
+            this.properties.value += "\t";
+          });
+
+          break;
+        case "ArrowRight":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("ArrowRight");
+
+          keyElement.addEventListener("click", () => {
+            this.properties.value += "\t";
+          });
+
+          break;
+
         case "space":
-          keyElement.classList.add("keyboard__key--extra-wide");
+          keyElement.classList.add(
+            "keyboard__key--extra-wide",
+            "keyboard__key--dark"
+          );
           keyElement.innerHTML = createIconHTML("");
 
           keyElement.addEventListener("click", () => {
@@ -188,6 +276,47 @@ const Keyboard = {
           keyElement.addEventListener("click", () => {
             this.close();
             this._triggerEvent("onclose");
+          });
+
+          break;
+
+        case "Ctrl":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("Ctrl");
+
+          keyElement.addEventListener("click", () => {
+            //this.close();
+            //this._triggerEvent("onclose");
+          });
+
+          break;
+
+        case "Win":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("Win");
+
+          keyElement.addEventListener("click", () => {
+            //this.close();
+            //this._triggerEvent("onclose");
+          });
+
+          break;
+        case "Alt":
+          keyElement.classList.add(
+            "keyboard__key--wide",
+            "keyboard__key--dark"
+          );
+          keyElement.innerHTML = createIconHTML("Alt");
+
+          keyElement.addEventListener("click", () => {
+            //this.close();
+            //this._triggerEvent("onclose");
           });
 
           break;
