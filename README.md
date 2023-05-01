@@ -1,2 +1,2 @@
 # virtual-keyboard
-https://linaplby.github.io/virtual-keyboard/index.html
+https://linaplby.github.io/virtual-keyboard/
